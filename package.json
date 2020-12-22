@@ -1,0 +1,23 @@
+{
+  "name": "caps",
+  "version": "1.0.0",
+  "description": "## Project: CAPS",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "node src/caps/caps.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dina-401-Advanced-Javascript/caps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dina-401-Advanced-Javascript/caps/issues"
+  },
+  "homepage": "https://github.com/Dina-401-Advanced-Javascript/caps#readme"
+}
