@@ -4,7 +4,7 @@ require('dotenv').config();
 const io = require('socket.io-client');
 const port = process.env.config || 3333;
 const host = `http://localhost:${port}`;
-const driverConnection = io.connect(`${host}/driver-system`);
+const driverConnection = io.connect(`${host}/caps`);
 
 driverConnection.on('pickup', pickupPackage);
 

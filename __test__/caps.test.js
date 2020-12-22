@@ -1,30 +1,33 @@
 'use strict';
 
-const caps = require('../caps');
+const logEvent = require('../src/caps/log-event');
 const faker = require('faker');
 
+process.env.STORE_NAME = 'DFA';
+process.env.STORE_ID = 'DFFFFF';
+let consoleSpy;
+beforeEach(() => {
+  // Attach to the console
+  consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+});
+
+afterEach(() => {
+  // put the console back
+  consoleSpy.mockRestore();
+});
 describe('CAPS', () => {
-  let consoleSpy;
   var order = {
-    store: process.env.STORE,
+    storeName: process.env.STORE_NAME,
+    storeID: process.env.STORE_ID,
     orderID: faker.random.uuid(),
     name: faker.name.findName(),
     address: faker.address.streetAddress() + ', ' + faker.address.city() + ', ' + faker.address.stateAbbr() + ' ' + faker.address.zipCode(),
   };
 
-  beforeEach(() => {
-    // Attach to the console
-    consoleSpy = jest.spyOn(console, 'log').mockImplementation();
-  });
-
-  afterEach(() => {
-    // put the console back
-    consoleSpy.mockRestore();
-  });
-
   it('can log any event', () => {
-    caps.logEvent('in-transit', order);
+    console.log(order);
+    logEvent('in-transit', order);
     expect(consoleSpy).toHaveBeenCalled();
   });
-  
+
 });
