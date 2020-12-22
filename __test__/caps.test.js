@@ -21,8 +21,10 @@ describe('CAPS', () => {
     // put the console back
     consoleSpy.mockRestore();
   });
+
   it('can log any event', () => {
     caps.logEvent('in-transit', order);
     expect(consoleSpy).toHaveBeenCalled();
   });
+  
 });
