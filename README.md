@@ -1,4 +1,4 @@
-# LAB - Class 11
+# LAB - Class 12
 
 ## Project: CAPS
 
@@ -13,18 +13,31 @@
 
 #### `.env` requirements (where applicable)
 
-- `STORE` - Name of your store
+For vendor:
+
+- `STORE_NAME` - Name of your store
+- `STORE_ID` - A unique ID for your store
+- `PORT` - The port to connect to the server connections on.
+
+For server:
+
+- `PORT` - The port to accept connections on.
+
+For driver:
+
+- `PORT` - The port to connect to the server connections on.
 
 #### How to initialize/run your application (where applicable)
 
-- e.g. `npm start`
+`npm start` in each folder: src/caps, src/driver and src/vendor.
 
 #### How to use your library (where applicable)
 
 #### Tests
 
-- Run using command: npm test
-- Testing every function in driver, vendor and caps
+Run using:
+`npm test` in each folder: src/caps, src/driver and src/vendor.
+
 [x] Driver can pickup an order
 [x] Driver can deliver an order
 [x] Vendor can send an order to be picked up

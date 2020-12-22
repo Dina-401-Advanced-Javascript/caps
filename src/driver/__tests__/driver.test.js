@@ -1,12 +1,13 @@
 'use strict';
-const driver = require('../src/driver');
+const driver = require('../driver');
 const faker = require('faker');
 
 describe('DRIVER', () => {
 
   let consoleSpy;
   var order = {
-    store: process.env.STORE,
+    storeName: process.env.STORE_NAME,
+    storeID: process.env.STORE_ID,
     orderID: faker.random.uuid(),
     name: faker.name.findName(),
     address: faker.address.streetAddress() + ', ' + faker.address.city() + ', ' + faker.address.stateAbbr() + ' ' + faker.address.zipCode(),
