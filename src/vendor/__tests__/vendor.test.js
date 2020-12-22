@@ -1,5 +1,5 @@
 'use strict';
-const vendor = require('../src/vendor/vendor');
+const vendor = require('../vendor');
 const faker = require('faker');
 
 describe('VENDOR', () => {

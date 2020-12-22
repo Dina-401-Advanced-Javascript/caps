@@ -1,6 +1,6 @@
 'use strict';
 
-const logEvent = require('../src/caps/log-event');
+const logEvent = require('../log-event');
 const faker = require('faker');
 
 process.env.STORE_NAME = 'DFA';

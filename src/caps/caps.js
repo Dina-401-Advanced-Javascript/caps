@@ -1,14 +1,12 @@
 
 'use strict';
 
-//const event = require('./src/lib/event');
-const util = require('util');
+require('dotenv').config();
 const port = process.env.PORT || 3333;
 const io = require('socket.io')(port);
 const logEvent = require('./log-event');
 
 const capsSystem = io.of('/caps');
-//const driverSystem = io.of('/driver-system');
 
 io.on('connection',  (socket) => {
   console.log('Connected to CAPS', socket.id);
