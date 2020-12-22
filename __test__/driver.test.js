@@ -22,13 +22,13 @@ describe('DRIVER', () => {
     consoleSpy.mockRestore();
   });
 
-  it('Can pickup an order', async () => {
-    await driver.pickedUp(order);
+  it('Can pickup an order', () => {
+    driver.pickedUp(order);
     setTimeout(() => { expect(consoleSpy).toHaveBeenCalled(); }, 1000);
   });
 
-  it('Can deliver an order', async () => {
-    await driver.delivered(order);
+  it('Can deliver an order', () => {
+    driver.delivered(order);
     setTimeout(() => { expect(consoleSpy).toHaveBeenCalled(); }, 3000);
   });
 
