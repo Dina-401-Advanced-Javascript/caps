@@ -6,17 +6,14 @@
 
 ### Links and Resources
 
-- [ci/cd](http://xyz.com) (GitHub Actions)
-- [back-end server url](http://xyz.com)
+- [ci/cd](https://github.com/Dina-401-Advanced-Javascript/caps/actions) (GitHub Actions)
+- [back-end server url](https://dina-caps.herokuapp.com/)
 
 ### Setup
 
 #### `.env` requirements (where applicable)
 
-i.e.
-
-- `PORT` - Port Number
-- `MONGODB_URI` - URL to the running mongo instance/db
+- `STORE` - Name of your store
 
 #### How to initialize/run your application (where applicable)
 
@@ -26,9 +23,13 @@ i.e.
 
 #### Tests
 
-- How do you run tests?
-- Any tests of note?
-- Describe any tests that you did not complete, skipped, etc
+- Run using command: npm test
+- Testing every function in driver, vendor and caps
+[x] Driver can pickup an order
+[x] Driver can deliver an order
+[x] Vendor can send an order to be picked up
+[x] Vendor can thank driver
+[x] CAPS can log an event
 
 #### UML
 
