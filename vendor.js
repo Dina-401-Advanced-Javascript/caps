@@ -22,4 +22,4 @@ function orderReady() {
 
 setInterval(orderReady, 5000);
 
-module.exports = thankDriver;
+module.exports = {thankDriver, orderReady};

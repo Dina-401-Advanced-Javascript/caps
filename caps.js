@@ -4,8 +4,6 @@
 const event = require('./event');
 const util = require('util');
 
-
-
 //require the files that will be listening for events
 require('./driver');
 require('./vendor');
@@ -29,3 +27,5 @@ function logEvent(eventName, payload) {
   var date = new Date(Date.now());
   console.log(`EVENT: { event: ${eventName}, time: ${date.toString()}, payload: ${util.inspect(payload, { showHidden: false, depth: null })}}`);
 }
+
+module.exports = {logEvent};
