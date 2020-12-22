@@ -1,5 +1,5 @@
 'use strict';
-const driver = require('../driver');
+const driver = require('../src/driver');
 const faker = require('faker');
 
 describe('DRIVER', () => {

@@ -1,12 +1,12 @@
 
 'use strict';
 
-const event = require('./event');
+const event = require('./src/lib/event');
 const util = require('util');
 
 //require the files that will be listening for events
-require('./driver');
-require('./vendor');
+require('./src/driver');
+require('./src/vendor');
 
 event.on('pickup-ready', (payload) => {
   logEvent('pickup', payload);

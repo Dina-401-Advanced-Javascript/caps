@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 var faker = require('faker');
-var event = require('./event');
+var event = require('./lib/event');
 
 event.on('delivered',thankDriver);
 

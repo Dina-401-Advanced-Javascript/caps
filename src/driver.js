@@ -1,7 +1,7 @@
 'use strict';
 
 require('dotenv').config();
-var event = require('./event');
+var event = require('./lib/event');
 
 event.on('pickup', pickupPackage);
 
