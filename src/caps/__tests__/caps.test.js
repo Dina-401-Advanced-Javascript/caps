@@ -5,7 +5,9 @@ const faker = require('faker');
 
 process.env.STORE_NAME = 'DFA';
 process.env.STORE_ID = 'DFFFFF';
+
 let consoleSpy;
+
 beforeEach(() => {
   // Attach to the console
   consoleSpy = jest.spyOn(console, 'log').mockImplementation();
