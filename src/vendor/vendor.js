@@ -3,7 +3,7 @@
 require('dotenv').config();
 var faker = require('faker');
 const io = require('socket.io-client');
-const port = process.env.config || 3333;
+const port = process.env.PORT || 3333;
 const host = `http://localhost:${port}`;
 const vendorConnection = io.connect(`${host}/caps`);
 vendorConnection.emit('join', process.env.STORE_ID);
