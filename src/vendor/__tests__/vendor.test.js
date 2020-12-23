@@ -2,6 +2,9 @@
 const vendor = require('../vendor');
 const faker = require('faker');
 
+process.env.STORE_NAME = 'DFA';
+process.env.STORE_ID = 'DFFFFF';
+
 describe('VENDOR', () => {
   let consoleSpy;
   var order = {
@@ -11,6 +14,7 @@ describe('VENDOR', () => {
     name: faker.name.findName(),
     address: faker.address.streetAddress() + ', ' + faker.address.city() + ', ' + faker.address.stateAbbr() + ' ' + faker.address.zipCode(),
   };
+  
   beforeEach(() => {
     // Attach to the console
     consoleSpy = jest.spyOn(console, 'log').mockImplementation();

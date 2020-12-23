@@ -2,6 +2,9 @@
 const driver = require('../driver');
 const faker = require('faker');
 
+process.env.STORE_NAME = 'DFA';
+process.env.STORE_ID = 'DFFFFF';
+
 describe('DRIVER', () => {
 
   let consoleSpy;
