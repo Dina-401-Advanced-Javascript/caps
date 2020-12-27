@@ -6,19 +6,19 @@ const uuid = require('uuid').v4;
 const port = process.env.PORT || 3333;
 const io = require('socket.io')(port);
 const logEvent = require('./log-event');
-const queue = {
-  deliveries: {}};
+const Queue = require('../lib/queue');
 
 const capsSystem = io.of('/caps');
 
 io.on('connection', (socket) => {
-  console.log('Connected to CAPS', socket.id);
+  console.log('Connected to CAPS on socket with ID:', socket.id);
 });
 
 capsSystem.on('connection', (socket) => {
-
+  var queue;
 
   socket.on('join', room => {
+    if (!queue) queue = new Queue(room);
     console.log('Joining vendor room with ID:', room);
     socket.join(room);
   });
@@ -26,6 +26,7 @@ capsSystem.on('connection', (socket) => {
   socket.on('pickup-ready', (payload) => {
     logEvent('pickup', payload);
     const id = uuid();
+    if (!queue) queue = new Queue(id);
     queue.deliveries[id] = payload;
     socket.emit('added');
     capsSystem.emit('pickup', {id,payload});
@@ -41,8 +42,9 @@ capsSystem.on('connection', (socket) => {
     capsSystem.to(message.payload.storeID).emit('delivered', message);
   });
 
-  socket.on('getall', () => {
-    console.log('GETALL was called');
+  socket.on('getall', (vendorID) => {
+    if (!queue.vendorID) queue.vendorID = vendorID;
+    console.log('GETALL was called by vendor with ID:' , vendorID);
     // 1. loop thorugh all of the keys in the deliveries queue
     Object.keys(queue.deliveries).forEach(id => {
       // 2. for each id, emit 'delivered' with the id and payload

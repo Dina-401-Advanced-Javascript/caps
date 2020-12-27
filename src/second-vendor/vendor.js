@@ -5,13 +5,16 @@ var faker = require('faker');
 const io = require('socket.io-client');
 const port = process.env.PORT || 3333;
 const host = `http://localhost:${port}`;
+const Queue = require('../lib/queue');
+const queue = new Queue(process.env.STORE_ID);
+
 const vendorConnection = io.connect(`${host}/caps`);
 
 //join the room for this vendor by my store id
 vendorConnection.emit('join', process.env.STORE_ID);
 
 //emit get all in case there are deliveries waiting for this vendor when they reconnect.
-vendorConnection.emit('getall');
+vendorConnection.emit('getall', process.env.STORE_ID);
 
 //when a package is delivered, thank the driver + emit 'received'
 vendorConnection.on('delivered', thankDriver);
@@ -33,6 +36,6 @@ function orderReady() {
 }
 
 //every 5 seconds send out a pickup-ready event
-setInterval(orderReady, 5000);
+setInterval(orderReady, 500);
 
 module.exports = { thankDriver, orderReady };
