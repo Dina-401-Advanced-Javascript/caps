@@ -8,22 +8,22 @@ const driverConnection = io.connect(`${host}/caps`);
 
 driverConnection.on('pickup', pickupPackage);
 
-function pickupPackage(payload) {
-  pickedUp(payload);
-  delivered(payload);
+function pickupPackage(message) {
+  pickedUp(message);
+  delivered(message);
 }
 
-async function pickedUp(payload) {
+async function pickedUp(message) {
   await setTimeout(() => {
-    driverConnection.emit('in-transit-ready', payload);
-    console.log('DRIVER: picked up', payload.orderID);
+    driverConnection.emit('in-transit-ready', message);
+    console.log('DRIVER: picked up', message.payload.orderID);
   }, 1000);
 }
 
-async function delivered(payload) {
+async function delivered(message) {
   await setTimeout(() => {
-    driverConnection.emit('delivered-ready', payload);
-    console.log('DRIVER: delivered', payload.orderID);
+    driverConnection.emit('delivered-ready', message);
+    console.log('DRIVER: delivered', message.payload.orderID);
   }, 3000);
 }
 
