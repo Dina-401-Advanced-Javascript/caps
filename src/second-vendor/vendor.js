@@ -33,6 +33,6 @@ function orderReady() {
 }
 
 //every 5 seconds send out a pickup-ready event
-setInterval(orderReady, 5000);
+setInterval(orderReady, 500);
 
 module.exports = { thankDriver, orderReady };
