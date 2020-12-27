@@ -2,6 +2,7 @@
 'use strict';
 
 require('dotenv').config();
+const uuid = require('uuid').v4;
 const port = process.env.PORT || 3333;
 const io = require('socket.io')(port);
 const logEvent = require('./log-event');
@@ -13,7 +14,7 @@ io.on('connection',  (socket) => {
 });
 
 capsSystem.on('connection', (socket) => {
-  
+
   socket.on('join', room => {
     console.log('registered as', room);
     socket.join(room);
@@ -21,6 +22,8 @@ capsSystem.on('connection', (socket) => {
 
   socket.on('pickup-ready', (payload) => {
     logEvent('pickup', payload);
+    //const id = uuid();
+    //socket.emit('added');
     capsSystem.emit('pickup', payload);
   });
 
