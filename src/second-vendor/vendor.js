@@ -5,9 +5,6 @@ var faker = require('faker');
 const io = require('socket.io-client');
 const port = process.env.PORT || 3333;
 const host = `http://localhost:${port}`;
-const Queue = require('../lib/queue');
-const queue = new Queue(process.env.STORE_ID);
-
 const vendorConnection = io.connect(`${host}/caps`);
 
 //join the room for this vendor by my store id

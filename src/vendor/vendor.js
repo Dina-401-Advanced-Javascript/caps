@@ -11,7 +11,7 @@ const vendorConnection = io.connect(`${host}/caps`);
 vendorConnection.emit('join', process.env.STORE_ID);
 
 //emit get all in case there are deliveries waiting for this vendor when they reconnect.
-vendorConnection.emit('getall');
+vendorConnection.emit('getall', process.env.STORE_ID);
 
 //when a package is delivered, thank the driver + emit 'received'
 vendorConnection.on('delivered', thankDriver);

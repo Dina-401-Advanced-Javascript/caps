@@ -6,6 +6,8 @@ const port = process.env.PORT || 3333;
 const host = `http://localhost:${port}`;
 const driverConnection = io.connect(`${host}/caps`);
 
+driverConnection.emit('getall');
+
 driverConnection.on('pickup', pickupPackage);
 
 function pickupPackage(message) {
