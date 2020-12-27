@@ -6,10 +6,9 @@ const uuid = require('uuid').v4;
 const port = process.env.PORT || 3333;
 const io = require('socket.io')(port);
 const logEvent = require('./log-event');
-const util = require('util');
-//const Queue = require('../lib/queue');
-const queue = {
-  vendors: {}};
+//const util = require('util');
+const Queue = require('../lib/server-queue');
+const queue = new Queue();
 const capsSystem = io.of('/caps');
 
 io.on('connection', (socket) => {
@@ -47,11 +46,11 @@ capsSystem.on('connection', (socket) => {
     if (!vendorID) {
       //this is the driver calling
       console.log('GETALL was called by driver:');  
+      //console.log(util.inspect(queue,false,null,true));
       Object.keys(queue.vendors).forEach(vendor => {
         Object.keys(queue.vendors[vendor].deliveries).forEach(id => {
           socket.emit('pickup', {id, payload: queue.vendors[vendor].deliveries[id]});
         });
-        console.log(util.inspect(queue.vendors[vendor], false, null, true /* enable colors */));
       });
     } else {
       //this is a vendor calling
