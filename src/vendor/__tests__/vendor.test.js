@@ -32,7 +32,10 @@ describe('VENDOR', () => {
   });
 
   it('Can thank driver', () => {
-    vendor.thankDriver(order);
+    var message = {
+      id: process.env.STORE_ID,
+      payload: order};
+    vendor.thankDriver(message);
     setTimeout(() => { expect(consoleSpy).toHaveBeenCalled(); }, 1000);
   });
 
